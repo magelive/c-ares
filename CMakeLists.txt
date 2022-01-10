@@ -36,6 +36,7 @@ OPTION (CARES_STATIC_PIC "Build the static library as PIC (position independent)
 OPTION (CARES_BUILD_TESTS "Build and run tests"                                                  OFF)
 OPTION (CARES_BUILD_CONTAINER_TESTS "Build and run container tests (implies CARES_BUILD_TESTS, Linux only)" OFF)
 OPTION (CARES_BUILD_TOOLS "Build tools"                                                          ON)
+OPTION (CARES_BUILD_EXAMPLE "Build example"                                                          ON)
 
 # Tests require static to be enabled on Windows to be able to access otherwise hidden symbols
 IF (CARES_BUILD_TESTS AND (NOT CARES_STATIC) AND WIN32)

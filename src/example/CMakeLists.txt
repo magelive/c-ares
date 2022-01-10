@@ -1,0 +1,43 @@
+IF (CARES_BUILD_EXAMPLE)
+	
+	# Build dns_resolve_mainloop
+	ADD_EXECUTABLE (dns_resolve_mainloop
+			dns_resolve_mainloop.c mainloop.c)
+	TARGET_INCLUDE_DIRECTORIES (dns_resolve_mainloop
+		PUBLIC "$<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>"
+		       "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>"
+		       "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/lib>"
+		       "$<BUILD_INTERFACE:${CARES_TOPLEVEL_DIR}/include>"
+		       "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+		PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}"
+	)
+	TARGET_COMPILE_DEFINITIONS (dns_resolve_mainloop PRIVATE HAVE_CONFIG_H=1)
+	TARGET_LINK_LIBRARIES (dns_resolve_mainloop PRIVATE ${PROJECT_NAME})
+
+	# Build dns_resolve_epoll.c
+	ADD_EXECUTABLE (dns_resolve_epoll dns_resolve_epoll.c)
+	TARGET_INCLUDE_DIRECTORIES (dns_resolve_epoll
+		PUBLIC "$<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>"
+		       "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>"
+		       "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/lib>"
+		       "$<BUILD_INTERFACE:${CARES_TOPLEVEL_DIR}/include>"
+		       "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+		PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}"
+	)
+	TARGET_COMPILE_DEFINITIONS (dns_resolve_epoll PRIVATE HAVE_CONFIG_H=1)
+	TARGET_LINK_LIBRARIES (dns_resolve_epoll PRIVATE ${PROJECT_NAME})
+
+
+	# Build dns_resolve_select
+	ADD_EXECUTABLE (dns_resolve_select dns_resolve_select.c)
+	TARGET_INCLUDE_DIRECTORIES (dns_resolve_select
+		PUBLIC "$<BUILD_INTERFACE:${PROJECT_BINARY_DIR}>"
+		       "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>"
+		       "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src/lib>"
+		       "$<BUILD_INTERFACE:${CARES_TOPLEVEL_DIR}/include>"
+		       "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+		PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}"
+	)
+	TARGET_COMPILE_DEFINITIONS (dns_resolve_select PRIVATE HAVE_CONFIG_H=1)
+	TARGET_LINK_LIBRARIES (dns_resolve_select PRIVATE ${PROJECT_NAME})
+ENDIF ()
